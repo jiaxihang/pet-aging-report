@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宠物衰老时钟智能分析报告</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>基于人工智能的宠物衰老时钟智能分析报告</h1>
+
+    <form id="petForm">
+        <div class="form-group">
+            <label for="petType">宠物种类：</label>
+            <input type="text" id="petType" name="petType" required>
+        </div>
+
+        <div class="form-group">
+            <label for="petAge">宠物年龄：</label>
+            <input type="number" id="petAge" name="petAge" required>
+        </div>
+
+        <div class="form-group">
+            <label for="symptoms">症状：</label>
+            <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="sequenceResult">测序结果：</label>
+            <textarea id="sequenceResult" name="sequenceResult" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">生成分析报告</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('petForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const petType = document.getElementById('petType').value;
+            const petAge = document.getElementById('petAge').value;
+            const symptoms = document.getElementById('symptoms').value;
+            const sequenceResult = document.getElementById('sequenceResult').value;
+
+            const apiKey = 'app-fsfis0ZS9RnCyRZO0nGPerLL';
+            const apiUrl = 'https://api.dify.ai/v1/workflows/run'; // 请确认这是正确的Dify API端点
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "petType": petType,
+                        "petAge": petAge,
+                        "symptoms": symptoms,
+                        "sequenceResult": sequenceResult
+                    })
+                });
+
+                const data = await response.json();
+                const resultDiv = document.getElementById('result');
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<h2>分析结果</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                const resultDiv = document.getElementById('result');
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<h2>错误</h2><p>发生错误：' + error.message + '</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>
