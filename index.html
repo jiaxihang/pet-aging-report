@@ -80,7 +80,7 @@
             const sequenceResult = document.getElementById('sequenceResult').value;
             
             const apiKey = 'app-fsfis0ZS9RnCyRZO0nGPerLL';
-            const apiUrl = 'https://api.dify.ai/v1/workflows/run'; // 请确认这是正确的Dify API端点
+            const apiUrl = 'https://api.dify.ai/v1/workflows/run';
             
             try {
                 const response = await fetch(apiUrl, {
@@ -92,7 +92,7 @@
                     body: JSON.stringify({
                         "user": "jiaxihang199@gmail.com",
                         "response_mode": "blocking",
-                        "inputs": { // 将参数封装到 inputs 对象中
+                        "inputs": {
                             "petType": petType,
                             "petAge": petAge,
                             "symptoms": symptoms,
@@ -104,7 +104,15 @@
                 const data = await response.json();
                 const resultDiv = document.getElementById('result');
                 resultDiv.style.display = 'block';
-                resultDiv.innerHTML = '<h2>分析结果</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                
+                // 改进结果显示，只显示 outputs 内容
+                if (data.data && data.data.status === 'succeeded' && data.data.outputs) {
+                    resultDiv.innerHTML = '<h2>分析结果</h2><p>' + JSON.stringify(data.data.outputs, null, 2) + '</p>';
+                } else if (data.data && data.data.error) {
+                    resultDiv.innerHTML = '<h2>错误</h2><p>工作流执行失败：' + data.data.error + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<h2>错误</h2><p>未知错误，请查看完整响应：<pre>' + JSON.stringify(data, null, 2) + '</pre></p>';
+                }
             } catch (error) {
                 const resultDiv = document.getElementById('result');
                 resultDiv.style.display = 'block';
