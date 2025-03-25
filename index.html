@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宠物衰老时钟智能分析报告V1</title>
+    <title>宠物衰老时钟智能分析报告</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,7 +80,7 @@
             const sequenceResult = document.getElementById('sequenceResult').value;
             
             const apiKey = 'app-fsfis0ZS9RnCyRZO0nGPerLL';
-            const apiUrl = 'https://api.dify.ai/v1/workflows/run';
+            const apiUrl = 'https://api.dify.ai/v1/completion-messages'; // 使用 completion-messages 端点
             
             const requestBody = {
                 "user": "jiaxihang199@gmail.com",
@@ -110,10 +110,11 @@
                 const resultDiv = document.getElementById('result');
                 resultDiv.style.display = 'block';
                 
-                if (data.data && data.data.status === 'succeeded' && data.data.outputs) {
-                    resultDiv.innerHTML = '<h2>分析结果</h2><p>' + JSON.stringify(data.data.outputs, null, 2) + '</p>';
-                } else if (data.data && data.data.error) {
-                    resultDiv.innerHTML = '<h2>错误</h2><p>工作流执行失败：' + data.data.error + '</p>';
+                // 调整结果显示逻辑，适应 completion-messages 端点的响应格式
+                if (data && data.message === "success" && data.data) {
+                    resultDiv.innerHTML = '<h2>分析结果</h2><p>' + (data.data.text || JSON.stringify(data.data, null, 2)) + '</p>';
+                } else if (data && data.message === "error") {
+                    resultDiv.innerHTML = '<h2>错误</h2><p>工作流执行失败：' + (data.error || '未知错误') + '</p>';
                 } else {
                     resultDiv.innerHTML = '<h2>错误</h2><p>未知错误，请查看完整响应：<pre>' + JSON.stringify(data, null, 2) + '</pre></p>';
                 }
