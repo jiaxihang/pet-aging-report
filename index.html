@@ -20,14 +20,14 @@
         }
 
         /* 头部跑马灯 */
-        .carousel {
+        .hero-carousel {
             position: relative;
             width: 100%;
             height: 100vh;
             overflow: hidden;
         }
 
-        .carousel img {
+        .hero-carousel img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -38,9 +38,9 @@
             animation: fade 15s infinite;
         }
 
-        .carousel img:nth-child(1) { animation-delay: 0s; }
-        .carousel img:nth-child(2) { animation-delay: 5s; }
-        .carousel img:nth-child(3) { animation-delay: 10s; }
+        .hero-carousel img:nth-child(1) { animation-delay: 0s; }
+        .hero-carousel img:nth-child(2) { animation-delay: 5s; }
+        .hero-carousel img:nth-child(3) { animation-delay: 10s; }
 
         @keyframes fade {
             0% { opacity: 0; }
@@ -56,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -66,8 +66,13 @@
         }
 
         .overlay h1 {
-            font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
         }
 
         /* 导航栏 */
@@ -75,12 +80,19 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(28, 100, 242, 0.9);
-            padding: 1rem;
+            background: rgba(28, 100, 242, 0.95);
+            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
         }
 
         nav a {
@@ -92,6 +104,11 @@
         }
 
         nav a:hover {
+            color: #ffd700;
+        }
+
+        nav .user {
+            font-size: 1.2rem;
             color: #ffd700;
         }
 
@@ -107,6 +124,18 @@
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: #1C64F2;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #1C64F2;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         p {
@@ -114,69 +143,151 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 流程可视化 */
-        .process {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 4rem 0;
+        /* 商品跑马灯 */
+        .shop-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 2rem 0;
         }
 
-        .circle {
-            width: 120px;
-            height: 120px;
+        .shop-items {
+            display: flex;
+            animation: slide 20s infinite linear;
+        }
+
+        .shop-item {
+            min-width: 300px;
+            margin: 0 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .shop-item h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #1C64F2;
+        }
+
+        .shop-item a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #1C64F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .shop-item a:hover {
+            background: #1550c2;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 流程可视化 */
+        .process {
+            position: relative;
+            margin: 4rem 0;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #e6f0fa, #f4f4f9);
+            border-radius: 10px;
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step::before {
+            content: '';
+            width: 100%;
+            height: 4px;
+            background: #1C64F2;
+            position: absolute;
+            top: 25px;
+            left: -50%;
+            z-index: -1;
+        }
+
+        .process-step:first-child::before {
+            display: none;
+        }
+
+        .process-circle {
+            width: 50px;
+            height: 50px;
             background: #1C64F2;
             color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            box-shadow: 0 0 10px rgba(28, 100, 242, 0.5);
+        }
+
+        .process-step p {
             font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
+            color: #555;
         }
 
-        .line {
-            flex-grow: 1;
-            height: 4px;
-            background: #1C64F2;
-            margin: 0 -10px;
-            z-index: 0;
-        }
-
-        /* 商店按钮 */
-        .shop-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
+        /* 页脚 */
+        footer {
             background: #1C64F2;
             color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p, footer a {
+            font-size: 1rem;
+            color: #f4f4f9;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            margin: 1rem;
-            transition: background 0.3s;
         }
 
-        .shop-btn:hover {
-            background: #1550c2;
+        footer a:hover {
+            color: #ffd700;
         }
 
-        .report-btn {
-            background: #ffd700;
-            color: #333;
+        .footer-links {
+            margin: 1rem 0;
         }
 
-        .report-btn:hover {
-            background: #e6c200;
-        }
-
-        /* 登录注册 */
-        .auth {
-            margin: 2rem 0;
-        }
-
-        .auth span {
-            font-size: 1.2rem;
+        .footer-links a {
             margin: 0 1rem;
         }
     </style>
@@ -184,24 +295,26 @@
 <body>
     <!-- 导航栏 -->
     <nav>
+        <div class="logo">AI宠物养护</div>
         <div>
             <a href="#home">首页</a>
             <a href="#shop">商店</a>
-            <a href="#process">流程</a>
+            <a href="#process">服务流程</a>
+            <a href="#about">关于我们</a>
         </div>
-        <div>
-            <a href="#login">登录</a>
-            <a href="#register">注册</a>
-        </div>
+        <div class="user">欢迎，小灵犬</div>
     </nav>
 
-    <!-- 跑马灯 -->
-    <div class="carousel">
+    <!-- 头部跑马灯 -->
+    <div class="hero-carousel">
         <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Pet Dog 1">
         <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="Pet Dog 2">
         <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a" alt="Pet Dog 3">
         <div class="overlay">
-            <h1>基于AI赋能的宠物犬衰老评估与精准养护系统</h1>
+            <div>
+                <h1>基于AI赋能的宠物犬衰老评估与精准养护系统</h1>
+                <p>数据驱动，智能养护，延长宠物陪伴时光</p>
+            </div>
         </div>
     </div>
 
@@ -211,33 +324,83 @@
         <p>宠物犬寿命短、易衰老，为现代人带来沉重的情感和经济负担。我们融合人工智能与生物信息学技术，开发了宠物犬精准养护系统。通过整合宠物犬品种、年龄、身体状况及咽拭子测序数据，利用深度学习算法和衰老时钟技术，构建高精度生理年龄鉴定模型，提供个性化养护方案，延长高端宠物陪伴主人的时间。</p>
     </div>
 
-    <!-- 商店 -->
+    <!-- 商品跑马灯 -->
     <div class="container" id="shop">
-        <h2>商店</h2>
-        <a href="#" class="shop-btn">咽拭子购买</a>
-        <a href="#" class="shop-btn">养护品</a>
-        <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" class="shop-btn report-btn" target="_blank">获取分析报告</a>
+        <h2>商品与服务</h2>
+        <div class="shop-carousel">
+            <div class="shop-items">
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1601758228006-658077745535" alt="Swab Kit">
+                    <h3>咽拭子采样套装</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Care Product">
+                    <h3>精准养护套餐</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1601758064360-8c9a560ad75f" alt="Report">
+                    <h3>衰老分析报告</h3>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                </div>
+                <!-- 重复以确保无缝滚动 -->
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1601758228006-658077745535" alt="Swab Kit">
+                    <h3>咽拭子采样套装</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Care Product">
+                    <h3>精准养护套餐</h3>
+                    <a href="#">立即购买</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 流程可视化 -->
     <div class="container" id="process">
-        <h2>流程可视化</h2>
+        <h2>服务流程</h2>
         <div class="process">
-            <div class="circle">咽拭子采集</div>
-            <div class="line"></div>
-            <div class="circle">样本测序</div>
-            <div class="line"></div>
-            <div class="circle">测序结果</div>
-            <div class="line"></div>
-            <div class="circle">分析报告</div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-circle">1</div>
+                    <p>咽拭子采集</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-circle">2</div>
+                    <p>样本测序</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-circle">3</div>
+                    <p>测序结果分析</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-circle">4</div>
+                    <p>生成报告</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- 登录注册 -->
-    <div class="container auth" id="login">
-        <h2>登录 / 注册</h2>
-        <p>当前用户：<span>小灵缇</span></p>
+    <!-- 关于我们 -->
+    <div class="container" id="about">
+        <h2>关于我们</h2>
+        <p>我们是一家专注于宠物健康管理的科技公司，致力于通过人工智能和生物信息学技术，为宠物主人提供科学、精准的养护方案。我们的使命是延长宠物与主人的陪伴时光，提升宠物生活质量。</p>
     </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <h3>AI宠物养护科技有限公司</h3>
+        <p>联系我们：service@aipetcare.com | 电话：400-123-4567</p>
+        <div class="footer-links">
+            <a href="#">隐私政策</a>
+            <a href="#">服务条款</a>
+            <a href="#">常见问题</a>
+        </div>
+        <p>&copy; 2025 AI宠物养护科技有限公司 版权所有</p>
+    </footer>
 
     <!-- 聊天机器人 -->
     <script>
