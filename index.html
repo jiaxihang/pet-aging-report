@@ -400,34 +400,34 @@
         <div class="shop-carousel">
             <div class="shop-items">
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9" alt="Swab Kit">
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758177266-08e4c9beb87b" alt="Care Product">
+                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
                     <h3>精准养护套餐</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758066440-a73ce7a48d39" alt="Report">
+                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
                     <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
                         target="_blank">获取报告</a>
                 </div>
                 <!-- 重复以实现无缝循环 -->
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9" alt="Swab Kit">
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758177266-08e4c9beb87b" alt="Care Product">
+                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
                     <h3>精准养护套餐</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758066440-a73ce7a48d39" alt="Report">
+                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
                     <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
                         target="_blank">获取报告</a>
@@ -438,6 +438,32 @@
 
     <style>
         /* 商品跑马灯样式 */
+        .container {
+            max-width: 1400px;
+            /* 增加容器宽度 */
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1C64F2;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #1C64F2;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .shop-carousel {
             position: relative;
             width: 100%;
@@ -447,18 +473,19 @@
 
         .shop-items {
             display: flex;
-            width: 200%;
-            /* 双倍宽度确保无缝循环 */
-            animation: slide 20s infinite linear;
+            width: calc(400px * 6);
+            /* 每个卡片400px，6个卡片 */
+            animation: slide 15s infinite linear;
         }
 
         .shop-item {
-            min-width: 300px;
+            width: 400px;
+            /* 增加卡片宽度 */
             margin: 0 1rem;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
             text-align: center;
             transition: transform 0.3s;
         }
@@ -469,25 +496,28 @@
 
         .shop-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
+            /* 增加图片高度 */
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
         }
 
         .shop-item h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin: 1rem 0;
             color: #1C64F2;
         }
 
         .shop-item a {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             background: #1C64F2;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 1rem;
+            font-size: 1.2rem;
             transition: background 0.3s;
         }
 
@@ -504,7 +534,7 @@
                 transform: translateX(-50%);
             }
 
-            /* 移动一半宽度实现循环 */
+            /* 移动一半宽度实现无缝循环 */
         }
     </style>
 
