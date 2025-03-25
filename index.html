@@ -164,7 +164,6 @@
             padding: 4rem 2rem;
             text-align: center;
             background: #f9fafb;
-            /* 统一背景色 */
         }
 
         h2 {
@@ -192,28 +191,17 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 商品跑马灯 */
-        .shop-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .shop-items {
+        /* 商品与服务样式 */
+        .shop-gallery {
             display: flex;
-            width: 300%;
-            /* 增加宽度以容纳更多卡片，实现无缝循环 */
-            animation: slide 20s infinite linear;
-        }
-
-        .shop-items:hover {
-            animation-play-state: paused;
-            /* 鼠标悬停时暂停跑马灯 */
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 2rem 0;
+            perspective: 2000px;
         }
 
         .shop-item {
-            min-width: 350px;
+            width: 350px;
             background: linear-gradient(145deg, #ffffff, #f0f0f0);
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -223,7 +211,6 @@
             position: relative;
             transform-style: preserve-3d;
             will-change: transform;
-            margin: 0 1rem;
         }
 
         .shop-item img {
@@ -263,7 +250,7 @@
         }
 
         /* 鼠标悬停效果 */
-        .shop-items:hover .shop-item {
+        .shop-gallery:hover .shop-item {
             transform: scale(0.95);
             filter: brightness(0.85);
         }
@@ -302,17 +289,6 @@
 
             100% {
                 transform: scale(1.15) rotateX(8deg) rotateY(8deg);
-            }
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-33.33%);
-                /* 移动 1/3 宽度 */
             }
         }
 
@@ -462,45 +438,24 @@
         </p>
     </div>
 
-    <!-- 商品跑马灯 -->
+    <!-- 商品与服务 -->
     <div class="container" id="shop">
         <h2>商品与服务</h2>
-        <div class="shop-carousel">
-            <div class="shop-items">
-                <!-- 重复卡片以实现无缝跑马灯效果 -->
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
-                    <h3>咽拭子采样套装</h3>
-                    <a href="#">立即购买</a>
-                </div>
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
-                    <h3>精准养护套餐</h3>
-                    <a href="#">立即购买</a>
-                </div>
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
-                    <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
-                        target="_blank">获取报告</a>
-                </div>
-                <!-- 重复卡片以实现无缝循环 -->
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
-                    <h3>咽拭子采样套装</h3>
-                    <a href="#">立即购买</a>
-                </div>
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
-                    <h3>精准养护套餐</h3>
-                    <a href="#">立即购买</a>
-                </div>
-                <div class="shop-item">
-                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
-                    <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
-                        target="_blank">获取报告</a>
-                </div>
+        <div class="shop-gallery">
+            <div class="shop-item">
+                <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
+                <h3>咽拭子采样套装</h3>
+                <a href="#">立即购买</a>
+            </div>
+            <div class="shop-item">
+                <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
+                <h3>精准养护套餐</h3>
+                <a href="#">立即购买</a>
+            </div>
+            <div class="shop-item">
+                <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
+                <h3>衰老分析报告</h3>
+                <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
             </div>
         </div>
     </div>
