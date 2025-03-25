@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,16 +39,38 @@
             animation: fade 15s infinite;
         }
 
-        .hero-carousel img:nth-child(1) { animation-delay: 0s; }
-        .hero-carousel img:nth-child(2) { animation-delay: 5s; }
-        .hero-carousel img:nth-child(3) { animation-delay: 10s; }
+        .hero-carousel img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .hero-carousel img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .hero-carousel img:nth-child(3) {
+            animation-delay: 10s;
+        }
 
         @keyframes fade {
-            0% { opacity: 0; }
-            20% { opacity: 1; }
-            33% { opacity: 1; }
-            53% { opacity: 0; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            33% {
+                opacity: 1;
+            }
+
+            53% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .overlay {
@@ -175,7 +198,8 @@
 
         .shop-items {
             display: flex;
-            width: 200%; /* 双倍宽度确保无缝循环 */
+            width: 200%;
+            /* 双倍宽度确保无缝循环 */
             animation: slide 20s infinite linear;
         }
 
@@ -223,8 +247,15 @@
         }
 
         @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* 移动一半宽度实现循环 */
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* 移动一半宽度实现循环 */
         }
 
         /* 服务流程 */
@@ -305,7 +336,8 @@
             margin-bottom: 1rem;
         }
 
-        footer p, footer a {
+        footer p,
+        footer a {
             font-size: 1rem;
             color: #f4f4f9;
             text-decoration: none;
@@ -324,6 +356,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 导航栏 -->
     <nav>
@@ -357,7 +390,8 @@
     <!-- 项目概况 -->
     <div class="container" id="home">
         <h2>项目概况</h2>
-        <p>宠物犬寿命短、易衰老，为现代人带来沉重的情感和经济负担。我们融合人工智能与生物信息学技术，开发了宠物犬精准养护系统。通过整合宠物犬品种、年龄、身体状况及咽拭子测序数据，利用深度学习算法和衰老时钟技术，构建高精度生理年龄鉴定模型，提供个性化养护方案，延长高端宠物陪伴主人的时间。</p>
+        <p>宠物犬寿命短、易衰老，为现代人带来沉重的情感和经济负担。我们融合人工智能与生物信息学技术，开发了宠物犬精准养护系统。通过整合宠物犬品种、年龄、身体状况及咽拭子测序数据，利用深度学习算法和衰老时钟技术，构建高精度生理年龄鉴定模型，提供个性化养护方案，延长高端宠物陪伴主人的时间。
+        </p>
     </div>
 
     <!-- 商品跑马灯 -->
@@ -366,39 +400,113 @@
         <div class="shop-carousel">
             <div class="shop-items">
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758228006-658077745535" alt="Swab Kit">
+                    <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Care Product">
+                    <img src="https://images.unsplash.com/photo-1601758177266-08e4c9beb87b" alt="Care Product">
                     <h3>精准养护套餐</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758064360-8c9a560ad75f" alt="Report">
+                    <img src="https://images.unsplash.com/photo-1601758066440-a73ce7a48d39" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
                 </div>
                 <!-- 重复以实现无缝循环 -->
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758228006-658077745535" alt="Swab Kit">
+                    <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Care Product">
+                    <img src="https://images.unsplash.com/photo-1601758177266-08e4c9beb87b" alt="Care Product">
                     <h3>精准养护套餐</h3>
                     <a href="#">立即购买</a>
                 </div>
                 <div class="shop-item">
-                    <img src="https://images.unsplash.com/photo-1601758064360-8c9a560ad75f" alt="Report">
+                    <img src="https://images.unsplash.com/photo-1601758066440-a73ce7a48d39" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        /* 商品跑马灯样式 */
+        .shop-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .shop-items {
+            display: flex;
+            width: 200%;
+            /* 双倍宽度确保无缝循环 */
+            animation: slide 20s infinite linear;
+        }
+
+        .shop-item {
+            min-width: 300px;
+            margin: 0 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .shop-item h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #1C64F2;
+        }
+
+        .shop-item a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #1C64F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .shop-item a:hover {
+            background: #1550c2;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* 移动一半宽度实现循环 */
+        }
+    </style>
 
     <!-- 服务流程 -->
     <div class="container" id="process">
@@ -452,19 +560,18 @@
             token: 'jQVOuEi5fgjcfTVX'
         }
     </script>
-    <script
-        src="https://udify.app/embed.min.js"
-        id="jQVOuEi5fgjcfTVX"
-        defer>
+    <script src="https://udify.app/embed.min.js" id="jQVOuEi5fgjcfTVX" defer>
     </script>
     <style>
         #dify-chatbot-bubble-button {
             background-color: #1C64F2 !important;
         }
+
         #dify-chatbot-bubble-window {
             width: 24rem !important;
             height: 40rem !important;
         }
     </style>
 </body>
+
 </html>
