@@ -52,11 +52,25 @@
         }
 
         @keyframes fade {
-            0% { opacity: 0; }
-            20% { opacity: 1; }
-            33% { opacity: 1; }
-            53% { opacity: 0; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            33% {
+                opacity: 1;
+            }
+
+            53% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .overlay {
@@ -130,7 +144,8 @@
         .user-panel img {
             width: 40px;
             height: 40px;
-            border-radius: 8px; /* 改为方形带圆角 */
+            border-radius: 8px;
+            /* 改为方形带圆角 */
             margin-right: 0.5rem;
             object-fit: cover;
         }
@@ -209,7 +224,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 商品跑马灯 - 保持原样 */
+        /* 商品跑马灯 */
         .shop-carousel {
             position: relative;
             width: 100%;
@@ -220,11 +235,13 @@
         .shop-items {
             display: flex;
             width: 300%;
+            /* 增加宽度以容纳更多卡片，实现无缝循环 */
             animation: slide 20s infinite linear;
         }
 
         .shop-items:hover {
             animation-play-state: paused;
+            /* 鼠标悬停时暂停跑马灯 */
         }
 
         .shop-item {
@@ -277,6 +294,7 @@
             transform: translateZ(10px);
         }
 
+        /* 鼠标悬停效果 */
         .shop-items:hover .shop-item {
             transform: scale(0.95);
             filter: brightness(0.85);
@@ -306,14 +324,28 @@
         }
 
         @keyframes tilt {
-            0% { transform: scale(1) rotateX(0deg) rotateY(0deg); }
-            50% { transform: scale(1.15) rotateX(12deg) rotateY(12deg); }
-            100% { transform: scale(1.15) rotateX(8deg) rotateY(8deg); }
+            0% {
+                transform: scale(1) rotateX(0deg) rotateY(0deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotateX(12deg) rotateY(12deg);
+            }
+
+            100% {
+                transform: scale(1.15) rotateX(8deg) rotateY(8deg);
+            }
         }
 
         @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.33%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-33.33%);
+                /* 移动 1/3 宽度 */
+            }
         }
 
         /* 服务流程 - 优化版 */
@@ -496,6 +528,7 @@
         <h2>商品与服务</h2>
         <div class="shop-carousel">
             <div class="shop-items">
+                <!-- 重复卡片以实现无缝跑马灯效果 -->
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
@@ -509,8 +542,10 @@
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
                 </div>
+                <!-- 重复卡片以实现无缝循环 -->
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
@@ -524,7 +559,8 @@
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
                 </div>
             </div>
         </div>
