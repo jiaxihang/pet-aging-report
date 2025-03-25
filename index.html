@@ -159,28 +159,32 @@
 
         /* 内容区 */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
             text-align: center;
+            background: #f9fafb;
+            /* 统一背景色 */
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             color: #1C64F2;
             position: relative;
+            font-weight: 700;
         }
 
         h2::after {
             content: '';
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: #1C64F2;
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         p {
@@ -198,52 +202,107 @@
 
         .shop-items {
             display: flex;
-            width: 200%;
-            /* 双倍宽度确保无缝循环 */
+            width: 300%;
+            /* 增加宽度以容纳更多卡片，实现无缝循环 */
             animation: slide 20s infinite linear;
         }
 
-        .shop-item {
-            min-width: 300px;
-            margin: 0 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s;
+        .shop-items:hover {
+            animation-play-state: paused;
+            /* 鼠标悬停时暂停跑马灯 */
         }
 
-        .shop-item:hover {
-            transform: translateY(-10px);
+        .shop-item {
+            min-width: 350px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+            position: relative;
+            transform-style: preserve-3d;
+            will-change: transform;
+            margin: 0 1rem;
         }
 
         .shop-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
+            transform: translateZ(0);
         }
 
         .shop-item h3 {
-            font-size: 1.5rem;
-            margin: 1rem 0;
+            font-size: 1.6rem;
+            margin: 0.5rem 0 1rem;
             color: #1C64F2;
+            font-weight: 600;
         }
 
         .shop-item a {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 2rem;
             background: #1C64F2;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-top: 1rem;
-            transition: background 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+            transform: translateZ(0);
         }
 
         .shop-item a:hover {
             background: #1550c2;
+            transform: translateZ(10px);
+        }
+
+        /* 鼠标悬停效果 */
+        .shop-items:hover .shop-item {
+            transform: scale(0.95);
+            filter: brightness(0.85);
+        }
+
+        .shop-item:hover {
+            transform: scale(1.15) rotateX(8deg) rotateY(8deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            filter: brightness(1);
+            z-index: 2;
+        }
+
+        .shop-item:hover img {
+            transform: translateZ(30px);
+        }
+
+        .shop-item:hover h3 {
+            transform: translateZ(20px);
+        }
+
+        .shop-item:hover a {
+            transform: translateZ(15px);
+        }
+
+        .shop-item:hover {
+            animation: tilt 0.5s ease;
+        }
+
+        @keyframes tilt {
+            0% {
+                transform: scale(1) rotateX(0deg) rotateY(0deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotateX(12deg) rotateY(12deg);
+            }
+
+            100% {
+                transform: scale(1.15) rotateX(8deg) rotateY(8deg);
+            }
         }
 
         @keyframes slide {
@@ -252,10 +311,9 @@
             }
 
             100% {
-                transform: translateX(-50%);
+                transform: translateX(-33.33%);
+                /* 移动 1/3 宽度 */
             }
-
-            /* 移动一半宽度实现循环 */
         }
 
         /* 服务流程 */
@@ -354,6 +412,16 @@
         .footer-links a {
             margin: 0 1rem;
         }
+
+        /* 聊天机器人样式 */
+        #dify-chatbot-bubble-button {
+            background-color: #1C64F2 !important;
+        }
+
+        #dify-chatbot-bubble-window {
+            width: 24rem !important;
+            height: 40rem !important;
+        }
     </style>
 </head>
 
@@ -397,181 +465,45 @@
     <!-- 商品跑马灯 -->
     <div class="container" id="shop">
         <h2>商品与服务</h2>
-        <div class="shop-gallery">
-            <div class="shop-item">
-                <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
-                <h3>咽拭子采样套装</h3>
-                <a href="#">立即购买</a>
-            </div>
-            <div class="shop-item">
-                <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
-                <h3>精准养护套餐</h3>
-                <a href="#">立即购买</a>
-            </div>
-            <div class="shop-item">
-                <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
-                <h3>衰老分析报告</h3>
-                <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
-                    target="_blank">获取报告</a>
+        <div class="shop-carousel">
+            <div class="shop-items">
+                <!-- 重复卡片以实现无缝跑马灯效果 -->
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
+                    <h3>咽拭子采样套装</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
+                    <h3>精准养护套餐</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
+                    <h3>衰老分析报告</h3>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
+                </div>
+                <!-- 重复卡片以实现无缝循环 -->
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
+                    <h3>咽拭子采样套装</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Care Product">
+                    <h3>精准养护套餐</h3>
+                    <a href="#">立即购买</a>
+                </div>
+                <div class="shop-item">
+                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
+                    <h3>衰老分析报告</h3>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
+                        target="_blank">获取报告</a>
+                </div>
             </div>
         </div>
     </div>
-
-    <style>
-        /* 商品与服务样式 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            text-align: center;
-            background: #f9fafb;
-            /* 添加一个浅色背景，提升整体质感 */
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
-            color: #1C64F2;
-            position: relative;
-            font-weight: 700;
-            /* 标题加粗 */
-        }
-
-        h2::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: #1C64F2;
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-            /* 圆角下划线 */
-        }
-
-        .shop-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            /* 增加卡片间距 */
-            padding: 2rem 0;
-            perspective: 2000px;
-            /* 增强透视效果 */
-        }
-
-        .shop-item {
-            width: 350px;
-            /* 稍微减小卡片宽度，显得更紧凑 */
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
-            /* 添加渐变背景 */
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
-            /* 延长过渡时间，动画更平滑 */
-            position: relative;
-            transform-style: preserve-3d;
-            /* 启用 3D 变换 */
-            will-change: transform;
-            /* 优化性能 */
-        }
-
-        .shop-item img {
-            width: 100%;
-            height: 220px;
-            /* 稍微减小图片高度 */
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            transition: transform 0.5s ease;
-            transform: translateZ(0);
-            /* 初始状态 */
-        }
-
-        .shop-item h3 {
-            font-size: 1.6rem;
-            /* 字体稍小，显得更精致 */
-            margin: 0.5rem 0 1rem;
-            color: #1C64F2;
-            font-weight: 600;
-        }
-
-        .shop-item a {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: #1C64F2;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: background 0.3s ease, transform 0.3s ease;
-            transform: translateZ(0);
-            /* 初始状态 */
-        }
-
-        .shop-item a:hover {
-            background: #1550c2;
-            transform: translateZ(10px);
-            /* 按钮在悬停时向前突出 */
-        }
-
-        /* 鼠标悬停效果 */
-        .shop-gallery:hover .shop-item {
-            transform: scale(0.95);
-            /* 周围卡片缩小 */
-            filter: brightness(0.85);
-            /* 周围卡片变暗 */
-        }
-
-        .shop-item:hover {
-            transform: scale(1.15) rotateX(8deg) rotateY(8deg);
-            /* 放大并倾斜 */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            /* 增强阴影 */
-            filter: brightness(1);
-            /* 保持亮度 */
-            z-index: 2;
-        }
-
-        .shop-item:hover img {
-            transform: translateZ(30px);
-            /* 图片向前突出，增强 3D 感 */
-        }
-
-        .shop-item:hover h3 {
-            transform: translateZ(20px);
-            /* 标题也向前突出 */
-        }
-
-        .shop-item:hover a {
-            transform: translateZ(15px);
-            /* 按钮向前突出 */
-        }
-
-        /* 添加细微的视差效果 */
-        .shop-item:hover {
-            animation: tilt 0.5s ease;
-            /* 添加一个倾斜动画 */
-        }
-
-        @keyframes tilt {
-            0% {
-                transform: scale(1) rotateX(0deg) rotateY(0deg);
-            }
-
-            50% {
-                transform: scale(1.15) rotateX(12deg) rotateY(12deg);
-            }
-
-            100% {
-                transform: scale(1.15) rotateX(8deg) rotateY(8deg);
-            }
-        }
-    </style>
 
     <!-- 服务流程 -->
     <div class="container" id="process">
@@ -625,18 +557,7 @@
             token: 'jQVOuEi5fgjcfTVX'
         }
     </script>
-    <script src="https://udify.app/embed.min.js" id="jQVOuEi5fgjcfTVX" defer>
-    </script>
-    <style>
-        #dify-chatbot-bubble-button {
-            background-color: #1C64F2 !important;
-        }
-
-        #dify-chatbot-bubble-window {
-            width: 24rem !important;
-            height: 40rem !important;
-        }
-    </style>
+    <script src="https://udify.app/embed.min.js" id="jQVOuEi5fgjcfTVX" defer></script>
 </body>
 
 </html>
