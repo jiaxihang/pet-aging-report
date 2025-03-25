@@ -52,25 +52,11 @@
         }
 
         @keyframes fade {
-            0% {
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            33% {
-                opacity: 1;
-            }
-
-            53% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            33% { opacity: 1; }
+            53% { opacity: 0; }
+            100% { opacity: 0; }
         }
 
         .overlay {
@@ -144,8 +130,7 @@
         .user-panel img {
             width: 40px;
             height: 40px;
-            border-radius: 8px;
-            /* 改为方形带圆角 */
+            border-radius: 8px; /* 改为方形带圆角 */
             margin-right: 0.5rem;
             object-fit: cover;
         }
@@ -224,7 +209,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 商品跑马灯 */
+        /* 商品跑马灯 - 保持原样 */
         .shop-carousel {
             position: relative;
             width: 100%;
@@ -250,6 +235,9 @@
             padding: 2rem;
             text-align: center;
             transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+            position: relative;
+            transform-style: preserve-3d;
+            will-change: transform;
             margin: 0 1rem;
         }
 
@@ -260,6 +248,7 @@
             border-radius: 12px;
             margin-bottom: 1.5rem;
             transition: transform 0.5s ease;
+            transform: translateZ(0);
         }
 
         .shop-item h3 {
@@ -280,11 +269,12 @@
             font-size: 1.1rem;
             font-weight: 500;
             transition: background 0.3s ease, transform 0.3s ease;
+            transform: translateZ(0);
         }
 
         .shop-item a:hover {
             background: #1550c2;
-            transform: translateY(-3px);
+            transform: translateZ(10px);
         }
 
         .shop-items:hover .shop-item {
@@ -293,23 +283,40 @@
         }
 
         .shop-item:hover {
-            transform: scale(1.15);
+            transform: scale(1.15) rotateX(8deg) rotateY(8deg);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             filter: brightness(1);
             z-index: 2;
         }
 
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-33.33%);
-            }
+        .shop-item:hover img {
+            transform: translateZ(30px);
         }
 
-        /* 服务流程 */
+        .shop-item:hover h3 {
+            transform: translateZ(20px);
+        }
+
+        .shop-item:hover a {
+            transform: translateZ(15px);
+        }
+
+        .shop-item:hover {
+            animation: tilt 0.5s ease;
+        }
+
+        @keyframes tilt {
+            0% { transform: scale(1) rotateX(0deg) rotateY(0deg); }
+            50% { transform: scale(1.15) rotateX(12deg) rotateY(12deg); }
+            100% { transform: scale(1.15) rotateX(8deg) rotateY(8deg); }
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+        }
+
+        /* 服务流程 - 优化版 */
         .process {
             margin: 4rem 0;
             padding: 2rem 0;
@@ -502,8 +509,7 @@
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
-                        target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
                 </div>
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Swab Kit">
@@ -518,8 +524,7 @@
                 <div class="shop-item">
                     <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Report">
                     <h3>衰老分析报告</h3>
-                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66"
-                        target="_blank">获取报告</a>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
                 </div>
             </div>
         </div>
