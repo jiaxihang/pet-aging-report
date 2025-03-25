@@ -3,127 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宠物衰老时钟智能分析报告</title>
+    <title>基于AI赋能的宠物犬衰老评估与精准养护系统</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, textarea {
+
+        /* 头部跑马灯 */
+        .carousel {
+            position: relative;
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            height: 100vh;
+            overflow: hidden;
         }
-        button {
-            background-color: #4CAF50;
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: fade 15s infinite;
+        }
+
+        .carousel img:nth-child(1) { animation-delay: 0s; }
+        .carousel img:nth-child(2) { animation-delay: 5s; }
+        .carousel img:nth-child(3) { animation-delay: 10s; }
+
+        @keyframes fade {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            33% { opacity: 1; }
+            53% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            z-index: 1;
         }
-        button:hover {
-            background-color: #45a049;
+
+        .overlay h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            display: none;
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(28, 100, 242, 0.9);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* 内容区 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1C64F2;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 流程可视化 */
+        .process {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem 0;
+        }
+
+        .circle {
+            width: 120px;
+            height: 120px;
+            background: #1C64F2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 4px;
+            background: #1C64F2;
+            margin: 0 -10px;
+            z-index: 0;
+        }
+
+        /* 商店按钮 */
+        .shop-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #1C64F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin: 1rem;
+            transition: background 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: #1550c2;
+        }
+
+        .report-btn {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .report-btn:hover {
+            background: #e6c200;
+        }
+
+        /* 登录注册 */
+        .auth {
+            margin: 2rem 0;
+        }
+
+        .auth span {
+            font-size: 1.2rem;
+            margin: 0 1rem;
         }
     </style>
 </head>
 <body>
-    <h1>基于人工智能的宠物衰老时钟智能分析报告</h1>
-    
-    <form id="petForm">
-        <div class="form-group">
-            <label for="petType">宠物种类：</label>
-            <input type="text" id="petType" name="petType" required>
+    <!-- 导航栏 -->
+    <nav>
+        <div>
+            <a href="#home">首页</a>
+            <a href="#shop">商店</a>
+            <a href="#process">流程</a>
         </div>
-        
-        <div class="form-group">
-            <label for="petAge">宠物年龄：</label>
-            <input type="number" id="petAge" name="petAge" required>
+        <div>
+            <a href="#login">登录</a>
+            <a href="#register">注册</a>
         </div>
-        
-        <div class="form-group">
-            <label for="symptoms">症状：</label>
-            <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label for="sequenceResult">测序结果：</label>
-            <textarea id="sequenceResult" name="sequenceResult" rows="4" required></textarea>
-        </div>
-        
-        <button type="submit">生成分析报告</button>
-    </form>
+    </nav>
 
-    <div id="result"></div>
+    <!-- 跑马灯 -->
+    <div class="carousel">
+        <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Pet Dog 1">
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="Pet Dog 2">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a" alt="Pet Dog 3">
+        <div class="overlay">
+            <h1>基于AI赋能的宠物犬衰老评估与精准养护系统</h1>
+        </div>
+    </div>
 
+    <!-- 项目概况 -->
+    <div class="container" id="home">
+        <h2>项目概况</h2>
+        <p>宠物犬寿命短、易衰老，为现代人带来沉重的情感和经济负担。我们融合人工智能与生物信息学技术，开发了宠物犬精准养护系统。通过整合宠物犬品种、年龄、身体状况及咽拭子测序数据，利用深度学习算法和衰老时钟技术，构建高精度生理年龄鉴定模型，提供个性化养护方案，延长高端宠物陪伴主人的时间。</p>
+    </div>
+
+    <!-- 商店 -->
+    <div class="container" id="shop">
+        <h2>商店</h2>
+        <a href="#" class="shop-btn">咽拭子购买</a>
+        <a href="#" class="shop-btn">养护品</a>
+        <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" class="shop-btn report-btn" target="_blank">获取分析报告</a>
+    </div>
+
+    <!-- 流程可视化 -->
+    <div class="container" id="process">
+        <h2>流程可视化</h2>
+        <div class="process">
+            <div class="circle">咽拭子采集</div>
+            <div class="line"></div>
+            <div class="circle">样本测序</div>
+            <div class="line"></div>
+            <div class="circle">测序结果</div>
+            <div class="line"></div>
+            <div class="circle">分析报告</div>
+        </div>
+    </div>
+
+    <!-- 登录注册 -->
+    <div class="container auth" id="login">
+        <h2>登录 / 注册</h2>
+        <p>当前用户：<span>小灵缇</span></p>
+    </div>
+
+    <!-- 聊天机器人 -->
     <script>
-        document.getElementById('petForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const petType = document.getElementById('petType').value;
-            const petAge = document.getElementById('petAge').value;
-            const symptoms = document.getElementById('symptoms').value;
-            const sequenceResult = document.getElementById('sequenceResult').value;
-            
-            const apiKey = 'app-fsfis0ZS9RnCyRZO0nGPerLL';
-            const apiUrl = 'https://api.dify.ai/v1/completion-messages'; // 使用 completion-messages 端点
-            
-            const requestBody = {
-                "user": "jiaxihang199@gmail.com",
-                "response_mode": "blocking",
-                "inputs": {
-                    "petType": petType,
-                    "petAge": petAge,
-                    "symptoms": symptoms,
-                    "sequenceResult": sequenceResult
-                }
-            };
-            
-            // 打印请求体，便于调试
-            console.log('Request Body:', JSON.stringify(requestBody, null, 2));
-            
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${apiKey}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(requestBody)
-                });
-                
-                const data = await response.json();
-                const resultDiv = document.getElementById('result');
-                resultDiv.style.display = 'block';
-                
-                // 调整结果显示逻辑，适应 completion-messages 端点的响应格式
-                if (data && data.message === "success" && data.data) {
-                    resultDiv.innerHTML = '<h2>分析结果</h2><p>' + (data.data.text || JSON.stringify(data.data, null, 2)) + '</p>';
-                } else if (data && data.message === "error") {
-                    resultDiv.innerHTML = '<h2>错误</h2><p>工作流执行失败：' + (data.error || '未知错误') + '</p>';
-                } else {
-                    resultDiv.innerHTML = '<h2>错误</h2><p>未知错误，请查看完整响应：<pre>' + JSON.stringify(data, null, 2) + '</pre></p>';
-                }
-            } catch (error) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.style.display = 'block';
-                resultDiv.innerHTML = '<h2>错误</h2><p>发生错误：' + error.message + '</p>';
-            }
-        });
+        window.difyChatbotConfig = {
+            token: 'jQVOuEi5fgjcfTVX'
+        }
     </script>
+    <script
+        src="https://udify.app/embed.min.js"
+        id="jQVOuEi5fgjcfTVX"
+        defer>
+    </script>
+    <style>
+        #dify-chatbot-bubble-button {
+            background-color: #1C64F2 !important;
+        }
+        #dify-chatbot-bubble-window {
+            width: 24rem !important;
+            height: 40rem !important;
+        }
+    </style>
 </body>
 </html>
