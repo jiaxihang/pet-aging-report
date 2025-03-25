@@ -81,7 +81,7 @@
             top: 0;
             width: 100%;
             background: rgba(28, 100, 242, 0.95);
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -107,9 +107,31 @@
             color: #ffd700;
         }
 
-        nav .user {
-            font-size: 1.2rem;
+        /* 用户窗格 */
+        .user-panel {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .user-panel img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .user-panel span {
             color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .user-panel .dropdown {
+            margin-left: 1rem;
+            color: white;
+            cursor: pointer;
         }
 
         /* 内容区 */
@@ -153,6 +175,7 @@
 
         .shop-items {
             display: flex;
+            width: 200%; /* 双倍宽度确保无缝循环 */
             animation: slide 20s infinite linear;
         }
 
@@ -201,10 +224,10 @@
 
         @keyframes slide {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); } /* 移动一半宽度实现循环 */
         }
 
-        /* 流程可视化 */
+        /* 服务流程 */
         .process {
             position: relative;
             margin: 4rem 0;
@@ -230,11 +253,15 @@
             content: '';
             width: 100%;
             height: 4px;
-            background: #1C64F2;
+            background: #ccc;
             position: absolute;
             top: 25px;
             left: -50%;
             z-index: -1;
+        }
+
+        .process-step.active::before {
+            background: #1C64F2;
         }
 
         .process-step:first-child::before {
@@ -244,7 +271,7 @@
         .process-circle {
             width: 50px;
             height: 50px;
-            background: #1C64F2;
+            background: #ccc;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -252,6 +279,11 @@
             align-items: center;
             margin: 0 auto 1rem;
             font-size: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .process-step.active .process-circle {
+            background: #1C64F2;
             box-shadow: 0 0 10px rgba(28, 100, 242, 0.5);
         }
 
@@ -302,7 +334,11 @@
             <a href="#process">服务流程</a>
             <a href="#about">关于我们</a>
         </div>
-        <div class="user">欢迎，小灵犬</div>
+        <div class="user-panel">
+            <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36" alt="User Avatar">
+            <span>小灵犬</span>
+            <div class="dropdown">▼</div>
+        </div>
     </nav>
 
     <!-- 头部跑马灯 -->
@@ -344,7 +380,7 @@
                     <h3>衰老分析报告</h3>
                     <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
                 </div>
-                <!-- 重复以确保无缝滚动 -->
+                <!-- 重复以实现无缝循环 -->
                 <div class="shop-item">
                     <img src="https://images.unsplash.com/photo-1601758228006-658077745535" alt="Swab Kit">
                     <h3>咽拭子采样套装</h3>
@@ -355,24 +391,29 @@
                     <h3>精准养护套餐</h3>
                     <a href="#">立即购买</a>
                 </div>
+                <div class="shop-item">
+                    <img src="https://images.unsplash.com/photo-1601758064360-8c9a560ad75f" alt="Report">
+                    <h3>衰老分析报告</h3>
+                    <a href="https://cloud.dify.ai/explore/installed/b7edfd4c-1f56-494d-b893-3940ac834c66" target="_blank">获取报告</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 流程可视化 -->
+    <!-- 服务流程 -->
     <div class="container" id="process">
         <h2>服务流程</h2>
         <div class="process">
             <div class="process-timeline">
-                <div class="process-step">
+                <div class="process-step active">
                     <div class="process-circle">1</div>
                     <p>咽拭子采集</p>
                 </div>
-                <div class="process-step">
+                <div class="process-step active">
                     <div class="process-circle">2</div>
                     <p>样本测序</p>
                 </div>
-                <div class="process-step">
+                <div class="process-step active">
                     <div class="process-circle">3</div>
                     <p>测序结果分析</p>
                 </div>
@@ -388,18 +429,21 @@
     <div class="container" id="about">
         <h2>关于我们</h2>
         <p>我们是一家专注于宠物健康管理的科技公司，致力于通过人工智能和生物信息学技术，为宠物主人提供科学、精准的养护方案。我们的使命是延长宠物与主人的陪伴时光，提升宠物生活质量。</p>
+        <p>公司成立于2023年，总部位于科技前沿城市，团队由生物信息学专家、AI工程师和宠物护理专业人士组成，已服务超过10,000名宠物主人，获得多项技术专利。</p>
     </div>
 
     <!-- 页脚 -->
     <footer>
         <h3>AI宠物养护科技有限公司</h3>
         <p>联系我们：service@aipetcare.com | 电话：400-123-4567</p>
+        <p>地址：中国科技城创新路1号</p>
         <div class="footer-links">
             <a href="#">隐私政策</a>
             <a href="#">服务条款</a>
             <a href="#">常见问题</a>
+            <a href="#">加入我们</a>
         </div>
-        <p>&copy; 2025 AI宠物养护科技有限公司 版权所有</p>
+        <p>© 2025 AI宠物养护科技有限公司 版权所有 | 备案号：京ICP备12345678号</p>
     </footer>
 
     <!-- 聊天机器人 -->
